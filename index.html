@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor Name — Videographer & Video Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ---------- 1. COLORS & BASICS (change the look here) ---------- */
+:root{
+  --bg:#0a0a0a; --card:#141414; --line:#262626;
+  --gold:#c9a84c; --gold-light:#e6cd85;
+  --text:#f2f2f2; --muted:#9a9a9a;
+  --head:'Poppins',system-ui,sans-serif;
+  --body:'Space Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+h1,h2,h3{font-family:var(--head);line-height:1.1}
+.gold{color:var(--gold)}
+.tag{display:inline-block;border:1px solid #4a3f1f;color:var(--gold);border-radius:99px;padding:5px 16px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:18px 0 12px}
+.sec-head p{color:var(--muted)}
+.btn{display:inline-block;padding:15px 34px;border-radius:99px;font-weight:600;border:1px solid var(--line);cursor:pointer;font-family:var(--body);font-size:1rem;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold-bg{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#111;border:0;box-shadow:0 10px 30px rgba(201,168,76,.25)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- 2. NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,10,10,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:70px}
+.logo{font-family:var(--head);font-weight:800;letter-spacing:.3em;color:var(--gold-light)}
+nav ul{display:flex;gap:34px;list-style:none}
+nav ul a{color:var(--muted);font-weight:500;padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+nav ul a:hover,nav ul a.active{color:var(--text);border-color:var(--text)}
+
+/* ---------- 3. HERO ---------- */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-top:70px}
+#bg{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero{position:relative}
+.avail{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:99px;padding:6px 18px;font-size:.75rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.avail i{width:7px;height:7px;border-radius:50%;background:#2fa84f}
+.hero h1{font-size:clamp(3.4rem,11vw,8rem);font-weight:800;margin:28px 0 24px}
+.hero h1 span{display:block;background:linear-gradient(180deg,var(--gold-light),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.typed{font-size:1.4rem;color:var(--muted)}
+.typed b{color:var(--text)}
+.typed em{display:inline-block;width:2px;height:1.2em;background:var(--gold);vertical-align:middle;margin-left:4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.sub{max-width:620px;margin:22px auto 38px;color:var(--muted);font-size:1.1rem}
+.hero .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- 4. ABOUT ---------- */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.photo{aspect-ratio:4/3;border-radius:22px;border:1px solid #4a3f1f;background:linear-gradient(135deg,#1c1c1c,#101010);display:grid;place-items:center;color:#333;font-size:.9rem;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 10px;text-align:center}
+.stat b{display:block;font-family:var(--head);font-size:2rem;color:var(--gold)}
+.stat span{font-size:.72rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.about h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin:18px 0 22px}
+.about p{color:var(--muted);margin-bottom:18px;max-width:52ch}
+
+/* ---------- 5. WORKS ---------- */
+.cat-title{display:flex;align-items:center;gap:16px;margin:50px 0 24px;font-size:1.7rem}
+.cat-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{position:relative;aspect-ratio:3/4;border-radius:20px;border:1px solid var(--line);background:linear-gradient(160deg,#1a1a1a,#0d0d0d);overflow:hidden;cursor:pointer;transition:transform .15s ease-out,border-color .3s;transform-style:preserve-3d;text-align:left;color:inherit;font:inherit;padding:0}
+.card:hover{border-color:#6b5a2a}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.92))}
+.play{position:absolute;top:20px;left:20px;z-index:2;width:48px;height:48px;border-radius:50%;background:var(--gold);color:#111;display:grid;place-items:center;font-size:.9rem;opacity:0;transform:scale(.7);transition:.25s}
+.card:hover .play,.card:focus-visible .play{opacity:1;transform:scale(1)}
+.info{position:absolute;left:22px;right:22px;bottom:22px;z-index:2}
+.info small{color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:.7rem;font-weight:600}
+.info h3{font-size:1.2rem;margin:4px 0 8px}
+.info span{font-size:.9rem;font-weight:600}
+
+/* video pop-up (modal) */
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;place-items:center;padding:24px}
+#modal.open{display:grid}
+#modal .box{width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}
+#modal iframe{width:100%;height:100%;border:0}
+#close{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer}
+
+/* ---------- 6. SKILLS ---------- */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px}
+.skill h3{font-size:1.15rem;margin-bottom:8px}
+.skill p{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+.bar{display:flex;align-items:center;gap:14px}
+.bar div{flex:1;height:4px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 1.2s ease}
+.bar b{color:var(--gold);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px}
+.chips span{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:9px 20px;font-size:.9rem}
+
+/* ---------- 7. CONTACT ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.4fr;gap:30px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px}
+.panel h3{margin-bottom:24px;font-size:1.4rem}
+.row{margin-bottom:20px}
+.row small{display:block;color:var(--muted);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+input,select,textarea{width:100%;background:#1c1c1c;border:1px solid var(--line);border-radius:12px;padding:16px 20px;color:var(--text);font:inherit;margin-bottom:16px}
+textarea{min-height:140px;resize:vertical}
+form .btn{width:100%}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* ---------- 8. CUSTOM CURSOR (computers only) ---------- */
+#dot,#ring{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;display:none}
+#dot{width:10px;height:10px;background:#fff;margin:-5px 0 0 -5px}
+#ring{width:38px;height:38px;border:1px solid rgba(255,255,255,.25);margin:-19px 0 0 -19px;transition:transform .12s}
+@media (hover:hover) and (pointer:fine){body.cursor-on *{cursor:none!important}#dot,#ring{display:block}}
+
+/* ---------- 9. PHONES ---------- */
+@media (max-width:860px){
+  nav ul{gap:16px;font-size:.85rem}
+  .about,.contact,.skills,.grid{grid-template-columns:1fr}
+  section{padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div id="dot"></div><div id="ring"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#home" class="logo">EDITOR</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <canvas id="bg"></canvas>
+  <div class="hero wrap">
+    <span class="avail"><i></i>Available for projects</span>
+    <h1>Editor<span>Name</span></h1>
+    <div class="typed">I'm a <b id="typed"></b><em></em></div>
+    <p class="sub">I turn ideas into cinematic visuals through storytelling, professional editing and motion graphics.</p>
+    <div class="btns">
+      <a href="#works" class="btn gold-bg">View Portfolio</a>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <div class="photo"><!-- Replace with: <img src="your-photo.jpg" alt="Editor photo"> -->Your photo here</div>
+      <div class="stats">
+        <div class="stat"><b data-count="2">0</b><span>Years experience</span></div>
+        <div class="stat"><b data-count="20">0</b><span>Projects completed</span></div>
+        <div class="stat"><b data-count="20">0</b><span>Happy clients</span></div>
+      </div>
+    </div>
+    <div>
+      <span class="tag">About me</span>
+      <h2>Crafting <span class="gold">Cinematic</span> Experiences</h2>
+      <p>I'm a videographer and video editor. Write two or three sentences here about what you shoot and edit, and where you are based.</p>
+      <p>Every frame is a choice: light, motion, rhythm and colour working together to make people feel something.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS (cards are built by JavaScript from the list at the bottom) -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Portfolio</span>
+      <h2>Selected <span class="gold">Works</span></h2>
+      <p>A collection of stories and visual experiences.</p>
+    </div>
+    <div id="works-list"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Expertise</span>
+      <h2>Tools of the <span class="gold">Craft</span></h2>
+      <p>The software I use to deliver finished work.</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><h3>Adobe Premiere Pro</h3><p>Video editing and timeline production.</p><div class="bar"><div><i data-w="92"></i></div><b>92%</b></div></div>
+      <div class="skill"><h3>Adobe After Effects</h3><p>Motion graphics and visual effects.</p><div class="bar"><div><i data-w="85"></i></div><b>85%</b></div></div>
+      <div class="skill"><h3>DaVinci Resolve</h3><p>Colour grading and correction.</p><div class="bar"><div><i data-w="88"></i></div><b>88%</b></div></div>
+    </div>
+    <div class="chips"><span>Videography</span><span>Colour Grading</span><span>Motion Graphics</span><span>Editing</span><span>Sound Design</span><span>Cinematography</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Get in touch</span>
+      <h2>Let's Create <span class="gold">Together</span></h2>
+      <p>Have a project in mind? Send it straight to WhatsApp.</p>
+    </div>
+    <div class="contact">
+      <div class="panel">
+        <h3>Contact Information</h3>
+        <div class="row"><small>Email</small>name@example.com</div>
+        <div class="row"><small>Phone</small>+91 00000 00000</div>
+        <div class="row"><small>Location</small>City, State, India</div>
+      </div>
+      <form class="panel" id="form">
+        <input id="f-name" placeholder="Your name" required>
+        <select id="f-type">
+          <option>Model edits</option><option>Automotive</option><option>Advertisement</option><option>Other</option>
+        </select>
+        <textarea id="f-msg" placeholder="Tell me about your project…" required></textarea>
+        <button class="btn gold-bg" type="submit">Send on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span class="logo">EDITOR</span><span>© 2026 Editor Name. All rights reserved.</span></div></footer>
+
+<!-- VIDEO POP-UP -->
+<div id="modal" role="dialog" aria-label="Video player">
+  <button id="close" aria-label="Close video">×</button>
+  <div class="box" id="box"></div>
+</div>
+
+<script>
+/* ============ SETTINGS: change these for the client ============ */
+const WHATSAPP = "919876543210";   // country code 91 + number, no + or spaces
+const ROLES = ["Videographer", "Video Editor", "Motion Designer"];
+
+/* ============ WORKS DATA ============
+   Later, Django will send this list from the database.
+   yt = the YouTube video ID (the part after v= in the link). Leave "" for a placeholder. */
+const WORKS = [
+  { category:"Model Edits", items:[
+    { title:"Cinematic Portrait Reel", label:"Portrait / Fashion", yt:"" },
+    { title:"Lifestyle Fashion Edit",  label:"Lifestyle",          yt:"" },
+    { title:"Creative Short Film",     label:"Creative Edit",      yt:"" } ]},
+  { category:"Automotive", items:[
+    { title:"Supercar Cinematic",      label:"Sports Car",         yt:"" },
+    { title:"Luxury Drive Experience", label:"Automotive Film",    yt:"" },
+    { title:"Open Road Series",        label:"Lifestyle",          yt:"" } ]},
+  { category:"Advertisements", items:[
+    { title:"Product Launch Film",     label:"Brand Commercial",   yt:"" },
+    { title:"Social Media Ad Campaign",label:"Social Media",       yt:"" },
+    { title:"Promotional Brand Story", label:"Promotional Film",   yt:"" } ]}
+];
+
+/* ---------- Build the works grid ---------- */
+const list = document.getElementById("works-list");
+WORKS.forEach(group => {
+  const cards = group.items.map(w => `
+    <button class="card" data-yt="${w.yt}" data-title="${w.title}">
+      ${w.yt ? `<img loading="lazy" alt="" src="https://img.youtube.com/vi/${w.yt}/hqdefault.jpg">` : ""}
+      <span class="play">▶</span>
+      <div class="info"><small>${w.label}</small><h3>${w.title}</h3><span>View project</span></div>
+    </button>`).join("");
+  list.insertAdjacentHTML("beforeend", `<h3 class="cat-title">${group.category}</h3><div class="grid">${cards}</div>`);
+});
+
+/* ---------- Video pop-up: click/tap a card to open, X / Esc / outside to close ---------- */
+const modal = document.getElementById("modal"), box = document.getElementById("box");
+function closeModal(){ modal.classList.remove("open"); box.innerHTML = ""; }   // clearing stops the video
+list.addEventListener("click", e => {
+  const card = e.target.closest(".card"); if(!card) return;
+  const id = card.dataset.yt;
+  box.innerHTML = id
+    ? `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="${card.dataset.title}"></iframe>`
+    : `<p>No video added yet.<br>Add a YouTube ID in the WORKS list.</p>`;
+  modal.classList.add("open");
+});
+document.getElementById("close").onclick = closeModal;
+modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+/* ---------- Card tilt toward the mouse ---------- */
+list.addEventListener("mousemove", e => {
+  const c = e.target.closest(".card"); if(!c) return;
+  const r = c.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  c.style.transform = `perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
+});
+list.addEventListener("mouseout", e => { const c = e.target.closest(".card"); if(c) c.style.transform = ""; });
+
+/* ---------- Typing text in the hero ---------- */
+const typed = document.getElementById("typed");
+let ri = 0, ci = 0, del = false;
+(function type(){
+  const word = ROLES[ri];
+  typed.textContent = word.slice(0, ci);
+  if(!del && ci === word.length){ del = true; return setTimeout(type, 1400); }
+  if(del && ci === 0){ del = false; ri = (ri + 1) % ROLES.length; }
+  ci += del ? -1 : 1;
+  setTimeout(type, del ? 45 : 90);
+})();
+
+/* ---------- Menu highlights the section you are in ---------- */
+const links = document.querySelectorAll("nav ul a");
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin:"-45% 0px -50% 0px" });
+document.querySelectorAll("section").forEach(s => spy.observe(s));
+
+/* ---------- Counters and skill bars start when scrolled into view ---------- */
+const once = new IntersectionObserver((es, o) => es.forEach(e => {
+  if(!e.isIntersecting) return;
+  e.target.querySelectorAll("[data-count]").forEach(n => {
+    const end = +n.dataset.count; let v = 0;
+    const t = setInterval(() => { v++; n.textContent = v + "+"; if(v >= end) clearInterval(t); }, 900 / end);
+  });
+  e.target.querySelectorAll("[data-w]").forEach(b => b.style.width = b.dataset.w + "%");
+  o.unobserve(e.target);
+}), { threshold:.3 });
+document.querySelectorAll("#about,#skills").forEach(s => once.observe(s));
+
+/* ---------- Contact form -> opens WhatsApp with the message typed ---------- */
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const msg = `Hi, I'm ${f("name").value}. Project type: ${f("type").value}.\n${f("msg").value}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+});
+function f(id){ return document.getElementById("f-" + id); }
+
+/* ---------- Custom cursor ---------- */
+const dot = document.getElementById("dot"), ring = document.getElementById("ring");
+if(matchMedia("(hover:hover) and (pointer:fine)").matches){
+  document.body.classList.add("cursor-on");
+  addEventListener("mousemove", e => {
+    dot.style.transform = ring.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+  });
+}
+
+/* ---------- Floating dots background in the hero ---------- */
+const cv = document.getElementById("bg"), cx = cv.getContext("2d");
+let W, H, pts = [];
+function size(){ W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight;
+  pts = Array.from({length: Math.min(60, W/20)}, () => ({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3})); }
+addEventListener("resize", size); size();
+(function draw(){
+  cx.clearRect(0,0,W,H);
+  pts.forEach((p,i) => {
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0||p.x>W) p.vx *= -1; if(p.y<0||p.y>H) p.vy *= -1;
+    cx.fillStyle = "rgba(201,168,76,.6)"; cx.fillRect(p.x, p.y, 2, 2);
+    for(let j=i+1;j<pts.length;j++){
+      const d = Math.hypot(p.x-pts[j].x, p.y-pts[j].y);
+      if(d<120){ cx.strokeStyle = `rgba(201,168,76,${.15*(1-d/120)})`; cx.beginPath(); cx.moveTo(p.x,p.y); cx.lineTo(pts[j].x,pts[j].y); cx.stroke(); }
+    }
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
