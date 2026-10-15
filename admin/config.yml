@@ -1,0 +1,32 @@
+# Tells the editing screen where the website's files live
+backend:
+  name: github
+  repo: pachufayis2005-dev/video-portfolio
+  branch: main
+
+# Images the client uploads are saved in this folder of the repo
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    files:
+      - name: "works"
+        label: "My Works"
+        file: "works.json"
+        fields:
+          - label: "Works"
+            name: "works"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Model Edits", "Automotive", "Advertisements"]
+              - { label: "Small label (optional)", name: "label", widget: "string", required: false, hint: "Short text shown above the title, e.g. Sports Car" }
+              - { label: "YouTube link", name: "youtube", widget: "string", required: false, hint: "Paste the full link of the video from YouTube" }
+              - { label: "Image (optional)", name: "image", widget: "image", required: false, hint: "Use this for photo works, or as a custom picture for a video" }
+              - { label: "Crop black bars", name: "crop", widget: "boolean", default: false, required: false, hint: "Turn on for cinematic widescreen videos that show black bars at the top and bottom" }

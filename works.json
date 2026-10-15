@@ -1,0 +1,13 @@
+{
+  "works": [
+    { "title": "Cinematic Portrait Reel", "category": "Model Edits", "label": "Portrait / Fashion", "youtube": "https://www.youtube.com/watch?v=eRsGyueVLvQ", "image": "", "crop": true },
+    { "title": "Lifestyle Fashion Edit", "category": "Model Edits", "label": "Lifestyle", "youtube": "https://www.youtube.com/watch?v=R6MlUcmOul8", "image": "", "crop": true },
+    { "title": "Creative Short Film", "category": "Model Edits", "label": "Creative Edit", "youtube": "", "image": "" },
+    { "title": "Supercar Cinematic", "category": "Automotive", "label": "Sports Car", "youtube": "https://www.youtube.com/watch?v=YE7VzlLtp-4", "image": "" },
+    { "title": "Luxury Drive Experience", "category": "Automotive", "label": "Automotive Film", "youtube": "https://www.youtube.com/watch?v=4eJVGqJhp40", "image": "" },
+    { "title": "Open Road Series", "category": "Automotive", "label": "Lifestyle", "youtube": "", "image": "" },
+    { "title": "Product Launch Film", "category": "Advertisements", "label": "Brand Commercial", "youtube": "", "image": "" },
+    { "title": "Social Media Ad Campaign", "category": "Advertisements", "label": "Social Media", "youtube": "", "image": "" },
+    { "title": "Promotional Brand Story", "category": "Advertisements", "label": "Promotional Film", "youtube": "", "image": "" }
+  ]
+}
